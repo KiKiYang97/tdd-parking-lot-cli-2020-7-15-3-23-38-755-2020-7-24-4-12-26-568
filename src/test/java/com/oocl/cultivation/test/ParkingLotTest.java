@@ -4,11 +4,11 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.CarTicket;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
+import sun.security.krb5.internal.Ticket;
 
 import java.util.concurrent.locks.LockSupport;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
@@ -49,5 +49,16 @@ public class ParkingLotTest {
 //        then
         assertEquals(firstCar,fetchedFirstCar);
         assertEquals(secondCar,fetchedSecondCar);
+    }
+
+    @Test
+    void should_fetched_no_car_when_fetch_car_given_wrong_ticket() {
+//        given
+        CarTicket ticket = new CarTicket();
+        ParkingLot parkingLot = new ParkingLot();
+//        when
+        Car fetchedCar = parkingLot.fetch(ticket);
+//        then
+        assertNull(fetchedCar);
     }
 }
