@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'idea'
 }
 
 group 'com.oocl.cultivation'
@@ -9,7 +10,8 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    mavenLocal()
+    jcenter()
 }
 
 jacocoTestReport {
