@@ -10,7 +10,7 @@ import java.util.List;
  * @ClassName ParkingLotManager
  */
 public class ParkingLotManager implements ParkingBoy {
-    private List<ParkingBoy> parkingBoyList;
+    private List<ParkingBoy> parkingBoyList = new ArrayList<>();
 
     public List<ParkingBoy> getParkingBoyList() {
         return parkingBoyList;
@@ -32,7 +32,7 @@ public class ParkingLotManager implements ParkingBoy {
     }
 
     public void addParkingBoy(ParkingBoy parkingBoy){
-
+        parkingBoyList.add(parkingBoy);
     }
 
 }
