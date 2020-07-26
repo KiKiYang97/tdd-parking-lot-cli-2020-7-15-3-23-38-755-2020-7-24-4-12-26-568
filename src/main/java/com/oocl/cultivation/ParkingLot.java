@@ -7,6 +7,7 @@ public class ParkingLot implements Comparable<ParkingLot> {
     private Map<CarTicket, Car> parkingLotMap;
     private int capacity;
     private int remainingCapacity;
+    private ParkingLotManager manager;
 
     public ParkingLot() {
         this(10);
@@ -16,6 +17,14 @@ public class ParkingLot implements Comparable<ParkingLot> {
         this.capacity = capacity;
         this.remainingCapacity = capacity;
         this.parkingLotMap = new HashMap<>();
+    }
+
+    public ParkingLotManager getManager() {
+        return manager;
+    }
+
+    public void setManager(ParkingLotManager manager) {
+        this.manager = manager;
     }
 
     public Map<CarTicket, Car> getParkingLotMap() {
