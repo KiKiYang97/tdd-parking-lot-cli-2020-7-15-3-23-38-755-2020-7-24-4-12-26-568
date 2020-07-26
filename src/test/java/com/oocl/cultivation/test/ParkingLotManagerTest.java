@@ -27,7 +27,7 @@ public class ParkingLotManagerTest {
         ParkingBoy smartBoy = new SmartParkingBoyImpl(lotArrayList);
         ParkingBoy superSmartBoy = new SuperSmartParkingBoyImpl(thirdLot);
 //        when
-        ParkingLotManager manager = new ParkingLotManager();
+        ParkingLotManager manager = new ParkingLotManager(new ArrayList<>());
         ParkingLot fourthLot = new ParkingLot();
         fourthLot.setManager(manager);
 //        then
@@ -53,7 +53,7 @@ public class ParkingLotManagerTest {
         BaseParkingBoy smartBoy = new SmartParkingBoyImpl(lotArrayList);
         BaseParkingBoy superSmartBoy = new SuperSmartParkingBoyImpl(parkingLotArrayList);
 //        when
-        ParkingLotManager manager = new ParkingLotManager();
+        ParkingLotManager manager = new ParkingLotManager(new ArrayList<>());
         fourthLot.setManager(manager);
         manager.addParkingBoy(smartBoy);
         manager.addParkingBoy(superSmartBoy);
@@ -62,5 +62,25 @@ public class ParkingLotManagerTest {
         ParkingBoy boy2 = manager.setSpecifyParkingBoy(smartBoy);
        assertEquals(superSmartBoy,boy);
        assertEquals(manager,boy2);
+    }
+
+    @Test
+    void should_sequentially_park_car_when_park_car_given_two_parking_lots() {
+//        given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+        lotArrayList.add(firstParkingLot);
+        lotArrayList.add(secondParkingLot);
+        BaseParkingBoy manager = new ParkingLotManager(lotArrayList);
+//        when
+        ArrayList<Car> list = new ArrayList<>();
+        for (int i = 0; i <12 ; i++) {
+            list.add(new Car());
+        }
+        manager.parkMultipleCars(list);
+//        then
+        assertEquals(0,firstParkingLot.getRemainingCapacity());
+        assertEquals(8,secondParkingLot.getRemainingCapacity());
     }
 }

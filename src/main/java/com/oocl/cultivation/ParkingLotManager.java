@@ -10,8 +10,17 @@ import java.util.List;
  * @Date 22:49   2020/7/26
  * @ClassName ParkingLotManager
  */
-public class ParkingLotManager implements ParkingBoy {
+public class ParkingLotManager extends BaseParkingBoy {
     private List<ParkingBoy> parkingBoyList = new ArrayList<>();
+
+    public ParkingLotManager(ParkingLot parkingLot) {
+        super(parkingLot);
+    }
+
+    public ParkingLotManager(ArrayList<ParkingLot> lotArrayList) {
+        super(lotArrayList);
+    }
+
 
     public List<ParkingBoy> getParkingBoyList() {
         return parkingBoyList;
@@ -29,7 +38,22 @@ public class ParkingLotManager implements ParkingBoy {
 
     @Override
     public void parkMultipleCars(ArrayList<Car> list) {
-
+        int size = list.size();
+        int index = 0;
+        for (int i = 0; i < parkingLotArrayList.size()&&size>0; i++) {
+            int remainingCapacity = parkingLotArrayList.get(i).getRemainingCapacity();
+            if (remainingCapacity > size){
+                for (int j = index; j < index+size ; j++) {
+                    parkingLotArrayList.get(i).park(list.get(j));
+                }
+            }else{
+                for (int j = index; j < remainingCapacity ; j++) {
+                    parkingLotArrayList.get(i).park(list.get(j));
+                    index = j;
+                    size--;
+                }
+            }
+        }
     }
 
     public void addParkingBoy(ParkingBoy parkingBoy){
