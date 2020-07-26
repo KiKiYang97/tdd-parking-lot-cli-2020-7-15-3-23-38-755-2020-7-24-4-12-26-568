@@ -1,84 +1,17 @@
 package com.oocl.cultivation;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Set;
 
 /**
  * @Author Dunka
  * @Description //TODO
- * @Date 18:23   2020/7/26
+ * @Date 22:02   2020/7/26
  * @ClassName ParkingBoy
  */
-public class ParkingBoy {
-    private ParkingLot parkingLot;
-    private ArrayList<ParkingLot> parkingLotArrayList;
-    private PriorityQueue<ParkingLot> parkingLotQueue;
+public interface ParkingBoy {
+    String fetchCar(CarTicket ticket);
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
+    String parkCar(Car car);
 
-    public ParkingBoy(ArrayList<ParkingLot> parkingLotArrayList) {
-        parkingLotQueue = new PriorityQueue<>();
-        parkingLotQueue.addAll(parkingLotArrayList);
-        this.parkingLotArrayList = parkingLotArrayList;
-    }
-
-    public String fetchCar(CarTicket ticket) {
-        if(ticket==null||!ticket.getClass().equals(CarTicket.class)){
-            return "Please provide your parking ticket.";
-        }
-        if (parkingLot.fetch(ticket)==null){
-            return "Unrecognized parking ticket.";
-        }
-        return null;
-    }
-
-    public String parkCar(Car car) {
-        if(parkingLot.park(car)==null){
-            return "Not enough position.";
-        }
-        return "";
-    }
-
-    public void parkMultipleCars(ArrayList<Car> list) {
-        int size = list.size();
-        int index = 0;
-        for (int i = 0; i < parkingLotArrayList.size()&&size>0; i++) {
-            int remainingCapacity = parkingLotArrayList.get(i).getRemainingCapacity();
-            if (remainingCapacity > size){
-                for (int j = index; j < index+size ; j++) {
-                    parkingLotArrayList.get(i).park(list.get(j));
-                }
-            }else{
-                for (int j = index; j < remainingCapacity ; j++) {
-                    parkingLotArrayList.get(i).park(list.get(j));
-                    index = j;
-                    size--;
-                }
-            }
-        }
-    }
-
-    public void parkMultipleCarsBySmartBoy(ArrayList<Car> list) {
-        int size = list.size();
-        int index = 0;
-        for (int i = 0; i < parkingLotQueue.size() && size>0; i++) {
-            ParkingLot parkingLot = parkingLotQueue.poll();
-            int remainingCapacity = parkingLot.getRemainingCapacity();
-            if (remainingCapacity > size){
-                for (int j = index; j < index+size ; j++) {
-                    parkingLot.park(list.get(j));
-                }
-            }else{
-                for (int j = index; j < remainingCapacity ; j++) {
-                    parkingLot.park(list.get(j));
-                    index = j;
-                    size--;
-                }
-            }
-        }
-    }
+    void parkMultipleCars(ArrayList<Car> list);
 }

@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -22,7 +19,7 @@ public class ParkingBoyTest {
 //        given
         CarTicket ticket = new CarTicket();
         ParkingLot parkingLot = new ParkingLot();
-        ParkingBoy boy = new ParkingBoy(parkingLot);
+        ParkingBoy boy = new ParkingBoyImpl(parkingLot);
 //        when
         String message = boy.fetchCar(ticket);
 //        then
@@ -34,7 +31,7 @@ public class ParkingBoyTest {
 //        given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoyImpl(parkingLot);
 //        when
         CarTicket carTicket = parkingLot.park(car);
         parkingLot.fetch(carTicket);
@@ -47,7 +44,7 @@ public class ParkingBoyTest {
     void should_return_provide_message_when_fetch_car_given_no_ticket() {
 //        given
         ParkingLot parkingLot = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoyImpl(parkingLot);
 //        when
         final String message = parkingBoy.fetchCar(null);
 //        then
@@ -61,7 +58,7 @@ public class ParkingBoyTest {
         for (int i = 0; i < 10 ; i++) {
             parkingLot.park(new Car());
         }
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoyImpl(parkingLot);
         Car car = new Car();
 //        when
         String message = parkingBoy.parkCar(car);
@@ -77,7 +74,7 @@ public class ParkingBoyTest {
         ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
         lotArrayList.add(firstParkingLot);
         lotArrayList.add(secondParkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(lotArrayList);
+        ParkingBoy parkingBoy = new ParkingBoyImpl(lotArrayList);
 //        when
         ArrayList<Car> list = new ArrayList<>();
         for (int i = 0; i <12 ; i++) {
@@ -101,12 +98,12 @@ public class ParkingBoyTest {
         ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
         lotArrayList.add(firstParkingLot);
         lotArrayList.add(secondParkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(lotArrayList);
+        ParkingBoy parkingBoy = new SmartParkingBoyImpl(lotArrayList);
         ArrayList<Car> list = new ArrayList<>();
         for (int i = 0; i <6 ; i++) {
             list.add(new Car());
         }
-        parkingBoy.parkMultipleCarsBySmartBoy(list);
+        parkingBoy.parkMultipleCars(list);
 //        then
         assertEquals(6,firstParkingLot.getRemainingCapacity());
         assertEquals(4,secondParkingLot.getRemainingCapacity());
