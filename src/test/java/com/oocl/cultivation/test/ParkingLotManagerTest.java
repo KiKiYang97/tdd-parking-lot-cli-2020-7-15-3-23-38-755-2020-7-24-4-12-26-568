@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Author Dunka
@@ -35,5 +35,30 @@ public class ParkingLotManagerTest {
         final List<ParkingBoy> parkingBoyList = manager.getParkingBoyList();
         final boolean flag = parkingBoyList.contains(smartBoy);
         assertTrue(flag);
+    }
+
+    @Test
+    void should_return_parking_boy_when_manager_manege_lot_given_parking_lot() {
+        //        given
+        ParkingLot firstLot = new ParkingLot();
+        ParkingLot secondLot = new ParkingLot();
+        ParkingLot thirdLot = new ParkingLot();
+        ParkingLot fourthLot = new ParkingLot();
+        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+        lotArrayList.add(firstLot);
+        lotArrayList.add(secondLot);
+        lotArrayList.add(thirdLot);
+        ParkingBoy smartBoy = new SmartParkingBoyImpl(lotArrayList);
+        ParkingBoy superSmartBoy = new SuperSmartParkingBoyImpl(fourthLot);
+//        when
+        ParkingLotManager manager = new ParkingLotManager();
+        fourthLot.setManager(manager);
+        manager.addParkingBoy(smartBoy);
+        manager.addParkingBoy(superSmartBoy);
+//        then
+        ParkingBoy boy = manager.setSpecifyParkingBoy(superSmartBoy);
+        ParkingBoy boy2 = manager.setSpecifyParkingBoy(smartBoy);
+       assertEquals(superSmartBoy,boy);
+       assertEquals(manager,boy2);
     }
 }

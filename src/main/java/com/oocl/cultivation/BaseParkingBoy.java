@@ -24,6 +24,11 @@ public abstract class BaseParkingBoy implements ParkingBoy {
         this.parkingLotArrayList = parkingLotArrayList;
     }
 
+    public ArrayList<ParkingLot> getParkingLotArrayList() {
+        return parkingLotArrayList;
+    }
+
+    @Override
     public String fetchCar(CarTicket ticket) {
         if(ticket==null||!ticket.getClass().equals(CarTicket.class)){
             return "Please provide your parking ticket.";
@@ -34,6 +39,7 @@ public abstract class BaseParkingBoy implements ParkingBoy {
         return null;
     }
 
+    @Override
     public String parkCar(Car car) {
         if(parkingLot.park(car)==null){
             return "Not enough position.";

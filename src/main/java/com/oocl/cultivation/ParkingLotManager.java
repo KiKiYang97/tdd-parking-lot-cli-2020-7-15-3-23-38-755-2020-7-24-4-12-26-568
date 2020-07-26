@@ -35,4 +35,7 @@ public class ParkingLotManager implements ParkingBoy {
         parkingBoyList.add(parkingBoy);
     }
 
+    public ParkingBoy setSpecifyParkingBoy(ParkingBoy smartBoy) {
+        return this;
+    }
 }
