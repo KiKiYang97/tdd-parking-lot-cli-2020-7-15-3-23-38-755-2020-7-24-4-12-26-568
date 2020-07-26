@@ -6,10 +6,7 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -77,18 +74,18 @@ public class ParkingBoyTest {
 //        given
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
-        Map<ParkingLot,Integer> lotMap = new HashMap<>();
-        lotMap.put(firstParkingLot,firstParkingLot.getCapacity()-firstParkingLot.getParkingLotMap().size());
-        lotMap.put(secondParkingLot,secondParkingLot.getCapacity()-secondParkingLot.getParkingLotMap().size());
-        ParkingBoy parkingBoy = new ParkingBoy(lotMap);
+        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+        lotArrayList.add(firstParkingLot);
+        lotArrayList.add(secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(lotArrayList);
 //        when
-        Set<Car> set = new HashSet<>();
+        ArrayList<Car> list = new ArrayList<>();
         for (int i = 0; i <12 ; i++) {
-            set.add(new Car());
+            list.add(new Car());
         }
-        parkingBoy.parkMultipleCars(set);
+        parkingBoy.parkMultipleCars(list);
 //        then
-        assertEquals(10,firstParkingLot.getParkingLotMap().size());
-        assertEquals(2,secondParkingLot.getParkingLotMap().size());
+        assertEquals(0,firstParkingLot.getRemainingCapacity());
+        assertEquals(8,secondParkingLot.getRemainingCapacity());
     }
 }

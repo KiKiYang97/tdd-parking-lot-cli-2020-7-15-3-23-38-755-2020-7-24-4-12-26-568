@@ -6,14 +6,16 @@ import java.util.Map;
 public class ParkingLot {
     private Map<CarTicket, Car> parkingLotMap;
     private int capacity;
+    private int remainingCapacity;
 
     public ParkingLot() {
-        this.capacity = 10;
-        this.parkingLotMap = new HashMap<>();
+        this(10);
     }
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
+        this.remainingCapacity = capacity;
+        this.parkingLotMap = new HashMap<>();
     }
 
     public Map<CarTicket, Car> getParkingLotMap() {
@@ -24,11 +26,20 @@ public class ParkingLot {
         return capacity;
     }
 
+    public int getRemainingCapacity() {
+        return remainingCapacity;
+    }
+
+    public void setRemainingCapacity(int remainingCapacity) {
+        this.remainingCapacity = remainingCapacity;
+    }
+
     public CarTicket park(Car car) {
-        if (this.parkingLotMap.size() < this.capacity)
+        if (this.remainingCapacity==0)
             return null;
         CarTicket ticket = new CarTicket();
         parkingLotMap.put(ticket, car);
+        this.remainingCapacity--;
         return ticket;
     }
 

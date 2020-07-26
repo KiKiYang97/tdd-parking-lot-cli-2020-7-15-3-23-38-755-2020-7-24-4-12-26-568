@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,18 +12,18 @@ import java.util.Set;
  */
 public class ParkingBoy {
     private ParkingLot parkingLot;
-    private Map<ParkingLot,Integer> parkingLotIntegerMap;
+    private ArrayList<ParkingLot> parkingLotArrayList;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
     }
 
-    public ParkingBoy(Map<ParkingLot, Integer> parkingLotIntegerMap) {
-        this.parkingLotIntegerMap = parkingLotIntegerMap;
+    public ParkingBoy(ArrayList<ParkingLot> parkingLotArrayList) {
+        this.parkingLotArrayList = parkingLotArrayList;
     }
 
     public String fetchCar(CarTicket ticket) {
-        if(!ticket.getClass().equals(CarTicket.class)){
+        if(ticket==null||!ticket.getClass().equals(CarTicket.class)){
             return "Please provide your parking ticket.";
         }
         if (parkingLot.fetch(ticket)==null){
@@ -38,6 +39,22 @@ public class ParkingBoy {
         return "";
     }
 
-    public void parkMultipleCars(Set<Car> set) {
+    public void parkMultipleCars(ArrayList<Car> list) {
+        int size = list.size();
+        int index = 0;
+        for (int i = 0; i < parkingLotArrayList.size()&&size>0; i++) {
+            int remainingCapacity = parkingLotArrayList.get(i).getRemainingCapacity();
+            if (remainingCapacity > size){
+                for (int j = index; j < index+size ; j++) {
+                    parkingLotArrayList.get(i).park(list.get(j));
+                }
+            }else{
+                for (int j = index; j < remainingCapacity ; j++) {
+                    parkingLotArrayList.get(i).park(list.get(j));
+                    index = j;
+                    size--;
+                }
+            }
+        }
     }
 }
