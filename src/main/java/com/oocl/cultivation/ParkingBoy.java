@@ -13,6 +13,9 @@ public class ParkingBoy {
     }
 
     public String fetchCar(CarTicket ticket) {
+        if(ticket==null){
+            return "Please provide your parking ticket.";
+        }
         if (parkingLot.fetch(ticket)==null){
             return "Unrecognized parking ticket.";
         }
