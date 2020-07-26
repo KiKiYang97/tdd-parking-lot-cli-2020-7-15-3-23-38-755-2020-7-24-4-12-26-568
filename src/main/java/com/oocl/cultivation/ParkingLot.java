@@ -16,6 +16,14 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public Map<CarTicket, Car> getParkingLotMap() {
+        return parkingLotMap;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
     public CarTicket park(Car car) {
         if (this.parkingLotMap.size() < this.capacity)
             return null;

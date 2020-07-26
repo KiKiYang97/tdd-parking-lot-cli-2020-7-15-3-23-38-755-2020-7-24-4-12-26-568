@@ -6,6 +6,11 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -65,5 +70,25 @@ public class ParkingBoyTest {
         String message = parkingBoy.parkCar(car);
 //        then
         assertEquals("Not enough position.",message);
+    }
+
+    @Test
+    void should_sequentially_park_car_when_park_car_given_two_parking_lots() {
+//        given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        Map<ParkingLot,Integer> lotMap = new HashMap<>();
+        lotMap.put(firstParkingLot,firstParkingLot.getCapacity()-firstParkingLot.getParkingLotMap().size());
+        lotMap.put(secondParkingLot,secondParkingLot.getCapacity()-secondParkingLot.getParkingLotMap().size());
+        ParkingBoy parkingBoy = new ParkingBoy(lotMap);
+//        when
+        Set<Car> set = new HashSet<>();
+        for (int i = 0; i <12 ; i++) {
+            set.add(new Car());
+        }
+        parkingBoy.parkMultipleCars(set);
+//        then
+        assertEquals(10,firstParkingLot.getParkingLotMap().size());
+        assertEquals(2,secondParkingLot.getParkingLotMap().size());
     }
 }

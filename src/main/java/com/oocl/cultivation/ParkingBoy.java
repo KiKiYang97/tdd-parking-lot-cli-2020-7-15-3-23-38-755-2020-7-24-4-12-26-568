@@ -1,5 +1,8 @@
 package com.oocl.cultivation;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @Author Dunka
  * @Description //TODO
@@ -8,8 +11,14 @@ package com.oocl.cultivation;
  */
 public class ParkingBoy {
     private ParkingLot parkingLot;
+    private Map<ParkingLot,Integer> parkingLotIntegerMap;
+
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
+    }
+
+    public ParkingBoy(Map<ParkingLot, Integer> parkingLotIntegerMap) {
+        this.parkingLotIntegerMap = parkingLotIntegerMap;
     }
 
     public String fetchCar(CarTicket ticket) {
@@ -27,5 +36,8 @@ public class ParkingBoy {
             return "Not enough position.";
         }
         return "";
+    }
+
+    public void parkMultipleCars(Set<Car> set) {
     }
 }
