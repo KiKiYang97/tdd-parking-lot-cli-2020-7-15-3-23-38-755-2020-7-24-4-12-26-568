@@ -2,6 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
@@ -13,12 +14,15 @@ import java.util.Set;
 public class ParkingBoy {
     private ParkingLot parkingLot;
     private ArrayList<ParkingLot> parkingLotArrayList;
+    private PriorityQueue<ParkingLot> parkingLotQueue;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
     }
 
     public ParkingBoy(ArrayList<ParkingLot> parkingLotArrayList) {
+        parkingLotQueue = new PriorityQueue<>();
+        parkingLotQueue.addAll(parkingLotArrayList);
         this.parkingLotArrayList = parkingLotArrayList;
     }
 
@@ -51,6 +55,26 @@ public class ParkingBoy {
             }else{
                 for (int j = index; j < remainingCapacity ; j++) {
                     parkingLotArrayList.get(i).park(list.get(j));
+                    index = j;
+                    size--;
+                }
+            }
+        }
+    }
+
+    public void parkMultipleCarsBySmartBoy(ArrayList<Car> list) {
+        int size = list.size();
+        int index = 0;
+        for (int i = 0; i < parkingLotQueue.size() && size>0; i++) {
+            ParkingLot parkingLot = parkingLotQueue.poll();
+            int remainingCapacity = parkingLot.getRemainingCapacity();
+            if (remainingCapacity > size){
+                for (int j = index; j < index+size ; j++) {
+                    parkingLot.park(list.get(j));
+                }
+            }else{
+                for (int j = index; j < remainingCapacity ; j++) {
+                    parkingLot.park(list.get(j));
                     index = j;
                     size--;
                 }

@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements Comparable<ParkingLot> {
     private Map<CarTicket, Car> parkingLotMap;
     private int capacity;
     private int remainingCapacity;
@@ -45,5 +45,11 @@ public class ParkingLot {
 
     public Car fetch(CarTicket ticket) {
         return parkingLotMap.remove(ticket);
+    }
+
+
+    @Override
+    public int compareTo(ParkingLot o) {
+        return o.remainingCapacity - this.remainingCapacity;
     }
 }
