@@ -69,4 +69,14 @@ public class ParkingLotManager extends BaseParkingBoy {
         }
         return this;
     }
+
+    public String specifyParkingBoyFetchCar(BaseParkingBoy boy, CarTicket carTicket) {
+        final ArrayList<ParkingLot> list = boy.getParkingLotArrayList();
+        for (int i = 0; i <list.size() ; i++) {
+            if(list.get(i).getManager()!= null && list.get(i).getManager().equals(this)){
+                return boy.fetchCar(carTicket);
+            }
+        }
+        return "";
+    }
 }

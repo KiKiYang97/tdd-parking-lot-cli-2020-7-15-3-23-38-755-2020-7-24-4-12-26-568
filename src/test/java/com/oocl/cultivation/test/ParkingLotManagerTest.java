@@ -83,4 +83,20 @@ public class ParkingLotManagerTest {
         assertEquals(0,firstParkingLot.getRemainingCapacity());
         assertEquals(8,secondParkingLot.getRemainingCapacity());
     }
+
+    @Test
+    void should_return_wrong_message_when_manage_park_car_given_park_car() {
+//        given
+        final ArrayList<ParkingLot> list = new ArrayList<>();
+        ParkingLot lot = new ParkingLot();
+        list.add(lot);
+        ParkingLotManager manager =new ParkingLotManager(list);
+        lot.setManager(manager);
+//        when
+        CarTicket carTicket = new CarTicket();
+        BaseParkingBoy boy = new ParkingBoyImpl(lot);
+        String message = manager.specifyParkingBoyFetchCar(boy,carTicket);
+//        then
+        assertEquals("Please provide your parking ticket.",message);
+    }
 }
