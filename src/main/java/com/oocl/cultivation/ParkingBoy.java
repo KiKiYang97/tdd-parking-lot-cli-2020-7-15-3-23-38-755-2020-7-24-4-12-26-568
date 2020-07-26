@@ -13,7 +13,7 @@ public class ParkingBoy {
     }
 
     public String fetchCar(CarTicket ticket) {
-        if(ticket==null){
+        if(!ticket.getClass().equals(CarTicket.class)){
             return "Please provide your parking ticket.";
         }
         if (parkingLot.fetch(ticket)==null){
@@ -23,6 +23,9 @@ public class ParkingBoy {
     }
 
     public String parkCar(Car car) {
+        if(parkingLot.park(car)==null){
+            return "Not enough position.";
+        }
         return "";
     }
 }
