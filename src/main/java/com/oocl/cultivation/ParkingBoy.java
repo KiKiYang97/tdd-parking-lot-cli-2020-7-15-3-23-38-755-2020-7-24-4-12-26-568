@@ -21,4 +21,8 @@ public class ParkingBoy {
         }
         return null;
     }
+
+    public String parkCar(Car car) {
+        return "";
+    }
 }
