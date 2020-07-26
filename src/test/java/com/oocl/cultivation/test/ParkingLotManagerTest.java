@@ -47,9 +47,11 @@ public class ParkingLotManagerTest {
         ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
         lotArrayList.add(firstLot);
         lotArrayList.add(secondLot);
-        lotArrayList.add(thirdLot);
-        ParkingBoy smartBoy = new SmartParkingBoyImpl(lotArrayList);
-        ParkingBoy superSmartBoy = new SuperSmartParkingBoyImpl(fourthLot);
+        ArrayList<ParkingLot> parkingLotArrayList = new ArrayList<>();
+        parkingLotArrayList.add(thirdLot);
+        parkingLotArrayList.add(fourthLot);
+        BaseParkingBoy smartBoy = new SmartParkingBoyImpl(lotArrayList);
+        BaseParkingBoy superSmartBoy = new SuperSmartParkingBoyImpl(parkingLotArrayList);
 //        when
         ParkingLotManager manager = new ParkingLotManager();
         fourthLot.setManager(manager);

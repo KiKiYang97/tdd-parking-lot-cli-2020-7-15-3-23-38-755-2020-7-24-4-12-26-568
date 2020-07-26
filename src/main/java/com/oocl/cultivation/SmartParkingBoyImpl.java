@@ -12,6 +12,7 @@ import java.util.PriorityQueue;
  */
 public class SmartParkingBoyImpl extends BaseParkingBoy{
 
+
     public SmartParkingBoyImpl(ParkingLot parkingLot) {
         super(parkingLot);
     }
