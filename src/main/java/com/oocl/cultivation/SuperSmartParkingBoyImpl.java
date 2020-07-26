@@ -7,21 +7,28 @@ import java.util.PriorityQueue;
 /**
  * @Author Dunka
  * @Description //TODO
- * @Date 22:12   2020/7/26
- * @ClassName SmartParkingBoyImpl
+ * @Date 22:17   2020/7/26
+ * @ClassName SuperSmartParkingBoyImpl
  */
-public class SmartParkingBoyImpl extends BaseParkingBoy{
-
-    public SmartParkingBoyImpl(ParkingLot parkingLot) {
+public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
+    public SuperSmartParkingBoyImpl(ParkingLot parkingLot) {
         super(parkingLot);
     }
 
-    public SmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
+    public SuperSmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
         super(parkingLotArrayList);
         parkingLotQueue = new PriorityQueue<>(new Comparator<ParkingLot>() {
             @Override
             public int compare(ParkingLot o1, ParkingLot o2) {
-                return o2.getRemainingCapacity()-o1.getRemainingCapacity();
+                final float v1 = 1.0f * o1.getRemainingCapacity() / 1.0f * o1.getCapacity();
+                final float v2 = 1.0f * o2.getRemainingCapacity() / 1.0f * o2.getCapacity();
+                if(v2>v1){
+                    return 1;
+                }else if(v2<v1){
+                    return -1;
+                }else{
+                    return 0;
+                }
             }
         });
         parkingLotQueue.addAll(parkingLotArrayList);
