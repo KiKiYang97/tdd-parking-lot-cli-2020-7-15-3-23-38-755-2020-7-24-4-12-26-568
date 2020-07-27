@@ -29,14 +29,15 @@ public abstract class BaseParkingBoy implements ParkingBoy {
     }
 
     @Override
-    public String fetchCar(CarTicket ticket) {
+    public Car fetchCar(CarTicket ticket) {
         if(ticket==null||!ticket.getClass().equals(CarTicket.class)){
-            return "Please provide your parking ticket.";
+            throw new RuntimeException( "Please provide your parking ticket.");
         }
-        if (parkingLot.fetch(ticket)==null){
-            return "Unrecognized parking ticket.";
+        Car car = parkingLot.fetch(ticket);
+        if (car==null){
+            throw new RuntimeException( "Unrecognized parking ticket.");
         }
-        return null;
+        return car;
     }
 
     @Override

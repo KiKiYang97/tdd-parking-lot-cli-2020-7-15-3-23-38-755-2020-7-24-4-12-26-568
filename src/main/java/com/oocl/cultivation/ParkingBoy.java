@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @ClassName ParkingBoy
  */
 public interface ParkingBoy {
-    String fetchCar(CarTicket ticket);
+    Car fetchCar(CarTicket ticket);
 
     String parkCar(Car car);
 
