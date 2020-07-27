@@ -10,7 +10,7 @@ import java.util.List;
  * @ClassName ParkingLotManager
  */
 public class ParkingLotManager extends BaseParkingBoy {
-    private List<ParkingBoy> parkingBoyList = new ArrayList<>();
+    private final List<ParkingBoy> parkingBoyList = new ArrayList<>();
 
 
     public ParkingLotManager(ArrayList<ParkingLot> lotArrayList) {
@@ -25,9 +25,9 @@ public class ParkingLotManager extends BaseParkingBoy {
     @Override
     public Car fetchCar(CarTicket ticket) {
         Car car = null;
-        for (ParkingBoy parkingBoy : parkingBoyList){
+        for (ParkingBoy parkingBoy : parkingBoyList) {
             car = parkingBoy.fetchCar(ticket);
-            if (car!=null){
+            if (car != null) {
                 break;
             }
         }
@@ -40,10 +40,10 @@ public class ParkingLotManager extends BaseParkingBoy {
         for (ParkingBoy parkingBoy : parkingBoyList) {
             try {
                 carTicket = parkingBoy.parkCar(car);
-            }catch (RuntimeException e){
+            } catch (RuntimeException e) {
             }
         }
-        if (carTicket == null){
+        if (carTicket == null) {
             carTicket = parkCarWithMoreParkingLots(car);
         }
         return carTicket;
@@ -62,7 +62,7 @@ public class ParkingLotManager extends BaseParkingBoy {
         return carTicket;
     }
 
-    public void addParkingBoy(ParkingBoy parkingBoy){
+    public void addParkingBoy(ParkingBoy parkingBoy) {
         parkingBoyList.add(parkingBoy);
     }
 }

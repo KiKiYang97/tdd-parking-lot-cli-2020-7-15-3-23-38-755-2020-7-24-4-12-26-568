@@ -19,7 +19,7 @@ public class ParkingBoyImpl extends BaseParkingBoy {
         CarTicket carTicket = null;
         for (int i = 0; i < parkingLots.size(); i++) {
             int remainingCapacity = parkingLots.get(i).getRemainingCapacity();
-            if (remainingCapacity>0){
+            if (remainingCapacity > 0) {
                 carTicket = parkingLots.get(i).park(car);
                 break;
             }

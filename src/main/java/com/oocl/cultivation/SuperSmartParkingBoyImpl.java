@@ -10,8 +10,9 @@ import java.util.PriorityQueue;
  * @Date 22:17   2020/7/26
  * @ClassName SuperSmartParkingBoyImpl
  */
-public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
+public class SuperSmartParkingBoyImpl extends BaseParkingBoy {
     protected PriorityQueue<ParkingLot> parkingLotQueue;
+
     public SuperSmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
         super(parkingLotArrayList);
         parkingLotQueue = new PriorityQueue<>(new Comparator<ParkingLot>() {
@@ -19,11 +20,11 @@ public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
             public int compare(ParkingLot o1, ParkingLot o2) {
                 final float v1 = 1.0f * o1.getRemainingCapacity() / 1.0f * o1.getCapacity();
                 final float v2 = 1.0f * o2.getRemainingCapacity() / 1.0f * o2.getCapacity();
-                if(v2>v1){
+                if (v2 > v1) {
                     return -1;
-                }else if(v2<v1){
+                } else if (v2 < v1) {
                     return 1;
-                }else{
+                } else {
                     return 0;
                 }
             }
@@ -34,10 +35,10 @@ public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
     @Override
     public CarTicket parkCarWithMoreParkingLots(Car car) {
         CarTicket carTicket = null;
-        for (int i = 0; i < parkingLotQueue.size() ; i++) {
+        for (int i = 0; i < parkingLotQueue.size(); i++) {
             ParkingLot parkingLot = parkingLotQueue.poll();
             int remainingCapacity = parkingLot.getRemainingCapacity();
-            if (remainingCapacity>0){
+            if (remainingCapacity > 0) {
                 carTicket = parkingLot.park(car);
                 break;
             }

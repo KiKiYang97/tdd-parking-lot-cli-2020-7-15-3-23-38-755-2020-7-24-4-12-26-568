@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot implements Comparable<ParkingLot> {
-    private Map<CarTicket, Car> parkingLotMap;
-    private int capacity;
+    private final Map<CarTicket, Car> parkingLotMap;
+    private final int capacity;
     private int remainingCapacity;
     private ParkingLotManager manager;
 
@@ -28,7 +28,7 @@ public class ParkingLot implements Comparable<ParkingLot> {
     }
 
     public CarTicket park(Car car) {
-        if (this.remainingCapacity==0) {
+        if (this.remainingCapacity == 0) {
             return null;
         }
         CarTicket ticket = new CarTicket();
