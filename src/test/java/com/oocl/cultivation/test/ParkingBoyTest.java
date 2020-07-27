@@ -46,10 +46,10 @@ public class ParkingBoyTest {
 //        given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoyImpl(parkingLot);
-////        when
-//        final String message = parkingBoy.fetchCar(null);
-////        then
-//        assertEquals("Please provide your parking ticket.",message);
+//        when
+        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.fetchCar(null));
+//        then
+        assertEquals("Please provide your parking ticket.",exception.getMessage());
     }
 
     @Test
