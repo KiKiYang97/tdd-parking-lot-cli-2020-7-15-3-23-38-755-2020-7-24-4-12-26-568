@@ -89,16 +89,9 @@ public class ParkingLotTest {
     void should_can_not_park_when_park_car_given_parking_lot_has_no_position() {
 //        given
         ParkingLot parkingLot = new ParkingLot();
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
-        parkingLot.park(new Car());
+        for (int i = 0; i <10 ; i++) {
+            parkingLot.park(new Car());
+        }
 //        when
         Car car = new Car();
         CarTicket carTicket = parkingLot.park(car);
