@@ -13,33 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuperSmartParkingBoyTest {
     @Test
     void should_park_car_in_large_position_rate_when_park_car_given_two_parking_lot() {
-//        ParkingLot firstParkingLot = new ParkingLot();
-//        ParkingLot secondParkingLot = new ParkingLot();
-//        ParkingLot thirdParkingLot = new ParkingLot();
-////        when
-//        for (int i = 0; i < 4 ; i++) {
-//            firstParkingLot.park(new Car());
-//        }
-//        for (int i = 0; i < 2 ; i++) {
-//            secondParkingLot.park(new Car());
-//        }
-//        for (int i = 0; i < 6 ; i++) {
-//            thirdParkingLot.park(new Car());
-//        }
-//        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
-//        lotArrayList.add(firstParkingLot);
-//        lotArrayList.add(secondParkingLot);
-//        lotArrayList.add(thirdParkingLot);
-//        ParkingBoy parkingBoy = new SuperSmartParkingBoyImpl(lotArrayList);
-//        ArrayList<Car> list = new ArrayList<>();
-//        for (int i = 0; i <9 ; i++) {
-//            list.add(new Car());
-//        }
-//        parkingBoy.parkCarsSequentially(list);
-////        then
-//        assertEquals(5,firstParkingLot.getRemainingCapacity());
-//        assertEquals(0,secondParkingLot.getRemainingCapacity());
-//        assertEquals(4,thirdParkingLot.getRemainingCapacity());
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot(2);
+//        when
+        for (int i = 0; i < 6 ; i++) {
+            firstParkingLot.park(new Car());
+        }
+        secondParkingLot.park(new Car());
+
+        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+        lotArrayList.add(firstParkingLot);
+        lotArrayList.add(secondParkingLot);
+        ParkingBoy parkingBoy = new SuperSmartParkingBoyImpl(lotArrayList);
+
+
+        parkingBoy.parkCarsSequentially(new Car());
+//        then
+        assertEquals(4,firstParkingLot.getRemainingCapacity());
+        assertEquals(0,secondParkingLot.getRemainingCapacity());
 
     }
 }

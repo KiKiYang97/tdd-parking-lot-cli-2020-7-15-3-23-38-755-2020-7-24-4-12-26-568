@@ -20,9 +20,9 @@ public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
                 final float v1 = 1.0f * o1.getRemainingCapacity() / 1.0f * o1.getCapacity();
                 final float v2 = 1.0f * o2.getRemainingCapacity() / 1.0f * o2.getCapacity();
                 if(v2>v1){
-                    return 1;
-                }else if(v2<v1){
                     return -1;
+                }else if(v2<v1){
+                    return 1;
                 }else{
                     return 0;
                 }
