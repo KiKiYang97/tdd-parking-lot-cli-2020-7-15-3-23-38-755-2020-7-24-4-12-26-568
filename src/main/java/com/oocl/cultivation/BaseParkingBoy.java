@@ -58,5 +58,5 @@ public abstract class BaseParkingBoy implements ParkingBoy {
     }
 
     @Override
-    public abstract CarTicket parkCarsSequentially(Car car);
+    public abstract CarTicket parkCarWithMoreParkingLots(Car car);
 }

@@ -24,7 +24,7 @@ public class SmartParkingBoyTest {
         lotArrayList.add(firstParkingLot);
         lotArrayList.add(secondParkingLot);
         ParkingBoy parkingBoy = new SmartParkingBoyImpl(lotArrayList);
-        parkingBoy.parkCarsSequentially(new Car());
+        parkingBoy.parkCarWithMoreParkingLots(new Car());
 //        then
         assertEquals(6,firstParkingLot.getRemainingCapacity());
         assertEquals(9,secondParkingLot.getRemainingCapacity());

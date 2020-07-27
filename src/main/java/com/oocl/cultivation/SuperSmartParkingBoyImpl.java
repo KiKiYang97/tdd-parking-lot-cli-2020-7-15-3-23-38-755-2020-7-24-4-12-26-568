@@ -32,7 +32,7 @@ public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
     }
 
     @Override
-    public CarTicket parkCarsSequentially(Car car) {
+    public CarTicket parkCarWithMoreParkingLots(Car car) {
         CarTicket carTicket = null;
         for (int i = 0; i < parkingLotQueue.size() ; i++) {
             ParkingLot parkingLot = parkingLotQueue.poll();

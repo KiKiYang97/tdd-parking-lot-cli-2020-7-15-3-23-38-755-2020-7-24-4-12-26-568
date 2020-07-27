@@ -84,7 +84,7 @@ public class ParkingBoyTest {
         lotArrayList.add(secondParkingLot);
         ParkingBoy parkingBoy = new ParkingBoyImpl(lotArrayList);
 //        when
-        parkingBoy.parkCarsSequentially(new Car());
+        parkingBoy.parkCarWithMoreParkingLots(new Car());
 //        then
         assertEquals(2,firstParkingLot.getRemainingCapacity());
         assertEquals(4,secondParkingLot.getRemainingCapacity());

@@ -11,5 +11,5 @@ public interface ParkingBoy {
 
     CarTicket parkCar(Car car);
 
-    CarTicket parkCarsSequentially(Car list);
+    CarTicket parkCarWithMoreParkingLots(Car car);
 }

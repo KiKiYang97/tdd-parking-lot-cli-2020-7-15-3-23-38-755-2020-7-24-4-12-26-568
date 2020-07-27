@@ -15,7 +15,7 @@ public class ParkingBoyImpl extends BaseParkingBoy {
     }
 
     @Override
-    public CarTicket parkCarsSequentially(Car car) {
+    public CarTicket parkCarWithMoreParkingLots(Car car) {
         CarTicket carTicket = null;
         for (int i = 0; i < parkingLots.size(); i++) {
             int remainingCapacity = parkingLots.get(i).getRemainingCapacity();

@@ -65,18 +65,18 @@ public class ParkingLotManagerTest {
 
     @Test
     void should_sequentially_park_car_when_park_car_given_two_parking_lots() {
-//        given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
-        lotArrayList.add(firstParkingLot);
-        lotArrayList.add(secondParkingLot);
-        BaseParkingBoy manager = new ParkingLotManager(lotArrayList);
-//        when
-        manager.parkCarsSequentially(new Car());
-//        then
-        assertEquals(0,firstParkingLot.getRemainingCapacity());
-        assertEquals(8,secondParkingLot.getRemainingCapacity());
+////        given
+//        ParkingLot firstParkingLot = new ParkingLot();
+//        ParkingLot secondParkingLot = new ParkingLot();
+//        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+//        lotArrayList.add(firstParkingLot);
+//        lotArrayList.add(secondParkingLot);
+//        BaseParkingBoy manager = new ParkingLotManager(lotArrayList);
+////        when
+//        manager.parkCarWithMoreParkingLots(new Car());
+////        then
+//        assertEquals(0,firstParkingLot.getRemainingCapacity());
+//        assertEquals(8,secondParkingLot.getRemainingCapacity());
     }
 
     @Test
