@@ -11,9 +11,6 @@ import java.util.PriorityQueue;
  * @ClassName SuperSmartParkingBoyImpl
  */
 public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
-    public SuperSmartParkingBoyImpl(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
 
     public SuperSmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
         super(parkingLotArrayList);

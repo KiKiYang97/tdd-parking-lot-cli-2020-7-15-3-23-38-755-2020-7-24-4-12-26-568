@@ -12,11 +12,6 @@ import java.util.PriorityQueue;
  */
 public class SmartParkingBoyImpl extends BaseParkingBoy{
 
-
-    public SmartParkingBoyImpl(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
-
     public SmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
         super(parkingLotArrayList);
         parkingLotQueue = new PriorityQueue<>(new Comparator<ParkingLot>() {

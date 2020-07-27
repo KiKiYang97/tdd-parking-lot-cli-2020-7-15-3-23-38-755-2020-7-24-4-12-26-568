@@ -1,6 +1,5 @@
 package com.oocl.cultivation;
 
-import javax.print.attribute.standard.NumberUp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +12,6 @@ import java.util.List;
 public class ParkingLotManager extends BaseParkingBoy {
     private List<ParkingBoy> parkingBoyList = new ArrayList<>();
 
-    public ParkingLotManager(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
 
     public ParkingLotManager(ArrayList<ParkingLot> lotArrayList) {
         super(lotArrayList);
@@ -40,15 +36,15 @@ public class ParkingLotManager extends BaseParkingBoy {
     public void parkMultipleCars(ArrayList<Car> list) {
         int size = list.size();
         int index = 0;
-        for (int i = 0; i < parkingLotArrayList.size()&&size>0; i++) {
-            int remainingCapacity = parkingLotArrayList.get(i).getRemainingCapacity();
+        for (int i = 0; i < parkingLots.size()&&size>0; i++) {
+            int remainingCapacity = parkingLots.get(i).getRemainingCapacity();
             if (remainingCapacity > size){
                 for (int j = index; j < index+size ; j++) {
-                    parkingLotArrayList.get(i).park(list.get(j));
+                    parkingLots.get(i).park(list.get(j));
                 }
             }else{
                 for (int j = index; j < remainingCapacity ; j++) {
-                    parkingLotArrayList.get(i).park(list.get(j));
+                    parkingLots.get(i).park(list.get(j));
                     index = j;
                     size--;
                 }
@@ -61,7 +57,7 @@ public class ParkingLotManager extends BaseParkingBoy {
     }
 
     public ParkingBoy setSpecifyParkingBoy(BaseParkingBoy smartBoy) {
-        final ArrayList<ParkingLot> list = smartBoy.getParkingLotArrayList();
+        final ArrayList<ParkingLot> list = smartBoy.getParkingLots();
         for (int i = 0; i <list.size() ; i++) {
             if(list.get(i).getManager()!= null && list.get(i).getManager().equals(this)){
                 return smartBoy;
@@ -71,7 +67,7 @@ public class ParkingLotManager extends BaseParkingBoy {
     }
 
     public Car specifyParkingBoyFetchCar(BaseParkingBoy boy, CarTicket carTicket) {
-        final ArrayList<ParkingLot> list = boy.getParkingLotArrayList();
+        final ArrayList<ParkingLot> list = boy.getParkingLots();
         for (int i = 0; i <list.size() ; i++) {
             if(list.get(i).getManager()!= null && list.get(i).getManager().equals(this)){
                 return boy.fetchCar(carTicket);

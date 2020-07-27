@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -10,22 +11,18 @@ import java.util.PriorityQueue;
  * @ClassName BaseParkingBoy
  */
 public abstract class BaseParkingBoy implements ParkingBoy {
-    protected ParkingLot parkingLot;
-    protected ArrayList<ParkingLot> parkingLotArrayList;
+    protected ArrayList<ParkingLot> parkingLots;
     protected PriorityQueue<ParkingLot> parkingLotQueue;
 
-    public BaseParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
 
-    public BaseParkingBoy(ArrayList<ParkingLot> parkingLotArrayList) {
+    public BaseParkingBoy(ArrayList<ParkingLot> parkingLots) {
         parkingLotQueue = new PriorityQueue<>();
-        parkingLotQueue.addAll(parkingLotArrayList);
-        this.parkingLotArrayList = parkingLotArrayList;
+        parkingLotQueue.addAll(parkingLots);
+        this.parkingLots = parkingLots;
     }
 
-    public ArrayList<ParkingLot> getParkingLotArrayList() {
-        return parkingLotArrayList;
+    public ArrayList<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
 
     @Override
@@ -33,7 +30,13 @@ public abstract class BaseParkingBoy implements ParkingBoy {
         if(ticket==null||!ticket.getClass().equals(CarTicket.class)){
             throw new RuntimeException( "Please provide your parking ticket.");
         }
-        Car car = parkingLot.fetch(ticket);
+        Car car = null;
+        for (int i = 0; i < parkingLots.size(); i++) {
+            car = parkingLots.get(i).fetch(ticket);
+            if (car!=null){
+                break;
+            }
+        }
         if (car==null){
             throw new RuntimeException( "Unrecognized parking ticket.");
         }
@@ -42,7 +45,13 @@ public abstract class BaseParkingBoy implements ParkingBoy {
 
     @Override
     public CarTicket parkCar(Car car) {
-        CarTicket carTicket = parkingLot.park(car);
+        CarTicket carTicket = null;
+        for (int i = 0; i < parkingLots.size(); i++) {
+            carTicket = parkingLots.get(i).park(car);
+            if (carTicket!=null){
+                break;
+            }
+        }
         if(carTicket==null){
             throw new RuntimeException("Not enough position.");
         }
