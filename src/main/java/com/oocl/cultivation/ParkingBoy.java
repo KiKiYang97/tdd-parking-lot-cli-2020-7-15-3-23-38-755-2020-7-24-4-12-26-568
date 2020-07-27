@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface ParkingBoy {
     Car fetchCar(CarTicket ticket);
 
-    String parkCar(Car car);
+    CarTicket parkCar(Car car);
 
     void parkMultipleCars(ArrayList<Car> list);
 }

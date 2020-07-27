@@ -32,7 +32,7 @@ public class ParkingLotManager extends BaseParkingBoy {
     }
 
     @Override
-    public String parkCar(Car car) {
+    public CarTicket parkCar(Car car) {
         return null;
     }
 

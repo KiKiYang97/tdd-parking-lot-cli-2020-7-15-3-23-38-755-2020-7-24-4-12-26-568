@@ -41,11 +41,12 @@ public abstract class BaseParkingBoy implements ParkingBoy {
     }
 
     @Override
-    public String parkCar(Car car) {
-        if(parkingLot.park(car)==null){
-            return "Not enough position.";
+    public CarTicket parkCar(Car car) {
+        CarTicket carTicket = parkingLot.park(car);
+        if(carTicket==null){
+            throw new RuntimeException("Not enough position.");
         }
-        return "";
+        return carTicket;
     }
 
     @Override
