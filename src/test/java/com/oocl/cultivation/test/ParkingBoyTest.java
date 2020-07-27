@@ -75,22 +75,18 @@ public class ParkingBoyTest {
 
     @Test
     void should_sequentially_park_car_when_park_car_given_two_parking_lots() {
-////        given
-//        ParkingLot firstParkingLot = new ParkingLot(4);
-//        ParkingLot secondParkingLot = new ParkingLot(4);
-//        firstParkingLot.park(new Car());
-//        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
-//        lotArrayList.add(firstParkingLot);
-//        lotArrayList.add(secondParkingLot);
-//        ParkingBoy parkingBoy = new ParkingBoyImpl(lotArrayList);
-////        when
-//        ArrayList<Car> list = new ArrayList<>();
-//        for (int i = 0; i <12 ; i++) {
-//            list.add(new Car());
-//        }
-//        parkingBoy.parkMultipleCars(list);
-////        then
-//        assertEquals(0,firstParkingLot.getRemainingCapacity());
-//        assertEquals(8,secondParkingLot.getRemainingCapacity());
+//        given
+        ParkingLot firstParkingLot = new ParkingLot(4);
+        ParkingLot secondParkingLot = new ParkingLot(4);
+        firstParkingLot.park(new Car());
+        ArrayList<ParkingLot> lotArrayList = new ArrayList<>();
+        lotArrayList.add(firstParkingLot);
+        lotArrayList.add(secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoyImpl(lotArrayList);
+//        when
+        parkingBoy.parkCarsSequentially(new Car());
+//        then
+        assertEquals(2,firstParkingLot.getRemainingCapacity());
+        assertEquals(4,secondParkingLot.getRemainingCapacity());
     }
 }

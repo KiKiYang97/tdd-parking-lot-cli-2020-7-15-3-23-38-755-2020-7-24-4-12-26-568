@@ -1,7 +1,5 @@
 package com.oocl.cultivation;
 
-import java.util.ArrayList;
-
 /**
  * @Author Dunka
  * @Description //TODO
@@ -13,5 +11,5 @@ public interface ParkingBoy {
 
     CarTicket parkCar(Car car);
 
-    void parkMultipleCars(ArrayList<Car> list);
+    CarTicket parkCarsSequentially(Car list);
 }

@@ -4,7 +4,6 @@ import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -74,11 +73,7 @@ public class ParkingLotManagerTest {
         lotArrayList.add(secondParkingLot);
         BaseParkingBoy manager = new ParkingLotManager(lotArrayList);
 //        when
-        ArrayList<Car> list = new ArrayList<>();
-        for (int i = 0; i <12 ; i++) {
-            list.add(new Car());
-        }
-        manager.parkMultipleCars(list);
+        manager.parkCarsSequentially(new Car());
 //        then
         assertEquals(0,firstParkingLot.getRemainingCapacity());
         assertEquals(8,secondParkingLot.getRemainingCapacity());

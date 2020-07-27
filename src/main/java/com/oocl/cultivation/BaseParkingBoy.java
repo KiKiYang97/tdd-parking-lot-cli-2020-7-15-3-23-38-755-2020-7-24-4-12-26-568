@@ -1,7 +1,6 @@
 package com.oocl.cultivation;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -59,5 +58,5 @@ public abstract class BaseParkingBoy implements ParkingBoy {
     }
 
     @Override
-    public abstract void parkMultipleCars(ArrayList<Car> list);
+    public abstract CarTicket parkCarsSequentially(Car car);
 }

@@ -32,23 +32,16 @@ public class SuperSmartParkingBoyImpl extends BaseParkingBoy{
     }
 
     @Override
-    public void parkMultipleCars(ArrayList<Car> list) {
-        int size = list.size();
-        int index = 0;
-        for (int i = 0; i < parkingLotQueue.size() && size > 0; i++) {
+    public CarTicket parkCarsSequentially(Car car) {
+        CarTicket carTicket = null;
+        for (int i = 0; i < parkingLotQueue.size() ; i++) {
             ParkingLot parkingLot = parkingLotQueue.poll();
             int remainingCapacity = parkingLot.getRemainingCapacity();
-            if (remainingCapacity > size) {
-                for (int j = index; j < index + size; j++) {
-                    parkingLot.park(list.get(j));
-                }
-            } else {
-                for (int j = index; j < remainingCapacity; j++) {
-                    parkingLot.park(list.get(j));
-                    index = j;
-                    size--;
-                }
+            if (remainingCapacity>0){
+                carTicket = parkingLot.park(car);
+                break;
             }
         }
+        return carTicket;
     }
 }
