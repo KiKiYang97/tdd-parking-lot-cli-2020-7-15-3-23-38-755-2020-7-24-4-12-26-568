@@ -24,7 +24,14 @@ public class ParkingLotManager extends BaseParkingBoy {
 
     @Override
     public Car fetchCar(CarTicket ticket) {
-        return null;
+        Car car = null;
+        for (ParkingBoy parkingBoy : parkingBoyList){
+            car = parkingBoy.fetchCar(ticket);
+            if (car!=null){
+                break;
+            }
+        }
+        return car;
     }
 
     @Override
