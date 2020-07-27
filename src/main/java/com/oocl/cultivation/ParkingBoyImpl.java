@@ -27,7 +27,7 @@ public class ParkingBoyImpl extends BaseParkingBoy {
             int remainingCapacity = parkingLotArrayList.get(i).getRemainingCapacity();
             if (remainingCapacity > size){
                 for (int j = index; j < index+size ; j++) {
-                    CarTicket park = parkingLotArrayList.get(i).park(list.get(j));
+                    parkingLotArrayList.get(i).park(list.get(j))
                 }
             }else{
                 for (int j = index; j < remainingCapacity ; j++) {

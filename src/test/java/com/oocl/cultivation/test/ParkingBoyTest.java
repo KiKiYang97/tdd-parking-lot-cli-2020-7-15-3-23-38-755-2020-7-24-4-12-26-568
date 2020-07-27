@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @Author Dunka
@@ -21,9 +22,9 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy boy = new ParkingBoyImpl(parkingLot);
 //        when
-        String message = boy.fetchCar(ticket);
+        Exception exception = assertThrows(RuntimeException.class, () -> boy.fetchCar(ticket));
 //        then
-        assertEquals("Unrecognized parking ticket.",message);
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 
     @Test
