@@ -17,10 +17,6 @@ public abstract class BaseParkingBoy implements ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public ArrayList<ParkingLot> getParkingLots() {
-        return parkingLots;
-    }
-
     @Override
     public Car fetchCar(CarTicket ticket) {
         if(ticket==null||!ticket.getClass().equals(CarTicket.class)){

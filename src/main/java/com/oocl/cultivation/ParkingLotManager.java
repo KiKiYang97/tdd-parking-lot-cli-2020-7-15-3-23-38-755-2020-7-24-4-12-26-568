@@ -65,24 +65,4 @@ public class ParkingLotManager extends BaseParkingBoy {
     public void addParkingBoy(ParkingBoy parkingBoy){
         parkingBoyList.add(parkingBoy);
     }
-
-    public ParkingBoy setSpecifyParkingBoy(BaseParkingBoy smartBoy) {
-        final ArrayList<ParkingLot> list = smartBoy.getParkingLots();
-        for (int i = 0; i <list.size() ; i++) {
-            if(list.get(i).getManager()!= null && list.get(i).getManager().equals(this)){
-                return smartBoy;
-            }
-        }
-        return this;
-    }
-
-    public Car specifyParkingBoyFetchCar(BaseParkingBoy boy, CarTicket carTicket) {
-        final ArrayList<ParkingLot> list = boy.getParkingLots();
-        for (int i = 0; i <list.size() ; i++) {
-            if(list.get(i).getManager()!= null && list.get(i).getManager().equals(this)){
-                return boy.fetchCar(carTicket);
-            }
-        }
-        return null;
-    }
 }
