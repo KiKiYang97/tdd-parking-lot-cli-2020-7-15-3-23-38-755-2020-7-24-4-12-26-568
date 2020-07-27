@@ -37,8 +37,8 @@ public class ParkingBoyTest {
         CarTicket carTicket = parkingLot.park(car);
         parkingLot.fetch(carTicket);
 //        then
-//        String message = parkingBoy.fetchCar(carTicket);
-//        assertEquals("Unrecognized parking ticket.",message);
+        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.fetchCar(carTicket));
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 
     @Test
