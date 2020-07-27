@@ -11,12 +11,9 @@ import java.util.PriorityQueue;
  */
 public abstract class BaseParkingBoy implements ParkingBoy {
     protected ArrayList<ParkingLot> parkingLots;
-    protected PriorityQueue<ParkingLot> parkingLotQueue;
 
 
     public BaseParkingBoy(ArrayList<ParkingLot> parkingLots) {
-        parkingLotQueue = new PriorityQueue<>();
-        parkingLotQueue.addAll(parkingLots);
         this.parkingLots = parkingLots;
     }
 

@@ -11,9 +11,12 @@ import java.util.PriorityQueue;
  * @ClassName SmartParkingBoyImpl
  */
 public class SmartParkingBoyImpl extends BaseParkingBoy{
+    protected PriorityQueue<ParkingLot> parkingLotQueue;
 
     public SmartParkingBoyImpl(ArrayList<ParkingLot> parkingLotArrayList) {
         super(parkingLotArrayList);
+        parkingLotQueue = new PriorityQueue<>();
+        parkingLotQueue.addAll(parkingLots);
         parkingLotQueue = new PriorityQueue<>(new Comparator<ParkingLot>() {
             @Override
             public int compare(ParkingLot o1, ParkingLot o2) {
