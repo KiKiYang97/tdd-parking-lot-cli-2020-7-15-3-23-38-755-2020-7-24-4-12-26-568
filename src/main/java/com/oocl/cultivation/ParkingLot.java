@@ -27,20 +27,12 @@ public class ParkingLot implements Comparable<ParkingLot> {
         this.manager = manager;
     }
 
-    public Map<CarTicket, Car> getParkingLotMap() {
-        return parkingLotMap;
-    }
-
     public int getCapacity() {
         return capacity;
     }
 
     public int getRemainingCapacity() {
         return remainingCapacity;
-    }
-
-    public void setRemainingCapacity(int remainingCapacity) {
-        this.remainingCapacity = remainingCapacity;
     }
 
     public CarTicket park(Car car) {
