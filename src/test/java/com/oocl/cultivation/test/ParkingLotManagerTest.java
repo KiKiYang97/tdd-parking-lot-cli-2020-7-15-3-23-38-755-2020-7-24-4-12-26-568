@@ -97,6 +97,6 @@ public class ParkingLotManagerTest {
         BaseParkingBoy boy = new ParkingBoyImpl(list);
         String message = manager.specifyParkingBoyFetchCar(boy,carTicket);
 //        then
-        assertEquals("Please provide your parking ticket.",message);
+        assertEquals("Unrecognized parking ticket.",message);
     }
 }
