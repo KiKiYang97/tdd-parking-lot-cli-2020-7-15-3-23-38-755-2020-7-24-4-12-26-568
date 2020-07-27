@@ -107,16 +107,18 @@ public class ParkingLotManagerTest {
     @Test
     void should_return_wrong_message_when_manage_park_car_given_park_car() {
 //        given
-//        final ArrayList<ParkingLot> list = new ArrayList<>();
-//        ParkingLot lot = new ParkingLot();
-//        list.add(lot);
-//        ParkingLotManager manager =new ParkingLotManager(list);
-//        lot.setManager(manager);
-////        when
-//        CarTicket carTicket = new CarTicket();
-//        BaseParkingBoy boy = new ParkingBoyImpl(list);
-//        String message = manager.specifyParkingBoyFetchCar(boy,carTicket);
-////        then
-//        assertEquals("Unrecognized parking ticket.",message);
+        ParkingLot parkingLot = new ParkingLot(3);
+        ArrayList<ParkingLot> lots = new ArrayList<>();
+        lots.add(parkingLot);
+        ParkingBoyImpl  parkingBoy = new ParkingBoyImpl(lots);
+
+        ParkingLotManager manager = new ParkingLotManager(null);
+        manager.addParkingBoy(parkingBoy);
+//        when
+        CarTicket ticket = manager.parkCar(new Car());
+        manager.fetchCar(ticket);
+//        then
+        Exception exception = assertThrows(RuntimeException.class, () -> manager.fetchCar(ticket));
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 }
