@@ -37,11 +37,28 @@ public class ParkingLotManagerTest {
          manager.parkCar(new Car());
          manager.parkCar(new Car());
          manager.parkCar(new Car());
-
+//       then
          assertEquals(0,parkingLot.getRemainingCapacity());
          assertEquals(0,secondParkingLot.getRemainingCapacity());
          assertEquals(0,thirdParkingLot.getRemainingCapacity());
 
+    }
+
+    @Test
+    void should_fetch_car_when_manager_manage() {
+        ParkingLot parkingLot = new ParkingLot(3);
+        ArrayList<ParkingLot> lots = new ArrayList<>();
+        lots.add(parkingLot);
+        ParkingBoyImpl  parkingBoy = new ParkingBoyImpl(lots);
+
+        ParkingLotManager manager = new ParkingLotManager(null);
+        manager.addParkingBoy(parkingBoy);
+        Car car = new Car();
+        CarTicket ticket = manager.parkCar(car);
+
+        Car fetchedCar = manager.fetchCar(ticket);
+
+        assertEquals(car,fetchedCar);
     }
 
     @Test
