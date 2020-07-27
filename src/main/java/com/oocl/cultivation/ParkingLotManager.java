@@ -36,15 +36,26 @@ public class ParkingLotManager extends BaseParkingBoy {
 
     @Override
     public CarTicket parkCar(Car car) {
-        return parkCarWithMoreParkingLots(car);
+        CarTicket carTicket = null;
+        for (ParkingBoy parkingBoy : parkingBoyList) {
+            try {
+                carTicket = parkingBoy.parkCar(car);
+            }catch (RuntimeException e){
+            }
+        }
+        if (carTicket == null){
+            carTicket = parkCarWithMoreParkingLots(car);
+        }
+        return carTicket;
     }
 
     @Override
     public CarTicket parkCarWithMoreParkingLots(Car car) {
         CarTicket carTicket = null;
-        for (ParkingBoy parkingBoy : parkingBoyList) {
-            carTicket = parkingBoy.parkCar(car);
-            if (carTicket != null) {
+        for (ParkingLot parkingLot : parkingLots) {
+            int remainingCapacity = parkingLot.getRemainingCapacity();
+            if (remainingCapacity > 0) {
+                carTicket = parkingLot.park(car);
                 break;
             }
         }

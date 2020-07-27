@@ -24,12 +24,12 @@ public class ParkingLotManagerTest {
 
         ParkingLot secondParkingLot = new ParkingLot(1);
         ArrayList<ParkingLot> secondLots = new ArrayList<>();
-        lots.add(secondParkingLot);
+        secondLots.add(secondParkingLot);
         SmartParkingBoyImpl  smartParkingBoy = new SmartParkingBoyImpl(secondLots);
 
         ParkingLot thirdParkingLot = new ParkingLot(1);
         ArrayList<ParkingLot> thirdLots = new ArrayList<>();
-        lots.add(thirdParkingLot);
+        thirdLots.add(thirdParkingLot);
         ParkingLotManager manager = new ParkingLotManager(thirdLots);
         manager.addParkingBoy(parkingBoy);
         manager.addParkingBoy(smartParkingBoy);
